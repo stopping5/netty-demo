@@ -1,0 +1,17 @@
+
+c
+java:S2095!"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(†š­î
+‡
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÙØ¤Þýÿÿÿÿ
+]	java:S125"<This block of commented-out lines of code should be removed.(ÎÓÅÿÿÿÿÿ8Û¤âþÎ0
+W
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(—›ûÔ
+S	java:S106("9Replace this use of System.out or System.err by a logger.(™ì½Àüÿÿÿÿ
+\
+java:S10755"ARefactor your code to get this URI from a customizable parameter.(¹´Ùüúÿÿÿÿ
+S	java:S106G"9Replace this use of System.out or System.err by a logger.(ð¯Àøÿÿÿÿ
+W
+java:S1075P"ARefactor your code to get this URI from a customizable parameter.(—›ûÔ
+V
+java:S1075Q"ARefactor your code to get this URI from a customizable parameter.(Ü•ÕK
+Z	java:S106]"9Replace this use of System.out or System.err by a logger.(Éûûùÿÿÿÿ8ÿ¼ßþÎ0

@@ -22,6 +22,19 @@ public class FIleIOServer {
 
     private ServerSocket socket;
 
+    /**
+     * 服务端接收文件
+     * 客户端：
+     *  ------------------  ------------------     ------------------
+     *   读取文件输入流      &     数据输出流       &    socket outputStream
+     *  ------------------  ------------------     ------------------
+     *  服务端：
+     *  ------------------  ------------------  ------------------
+     *   socket inputStream &    数据输入流程    &    读取文件输出流
+     *  ------------------  ------------------  ------------------
+     * @throws IOException
+     */
+
     public FIleIOServer() throws IOException {
         socket = new ServerSocket(7001);
         start();

@@ -1,0 +1,10 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(êÆÏ
+m
+java:S37769"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ïò¥¿ıÿÿÿÿ
+M	java:S106:"9Replace this use of System.out or System.err by a logger.(¬ÃÂ
+N	java:S106M"9Replace this use of System.out or System.err by a logger.(°œÇµ
+b
+java:S1128"@Remove this unused import 'java.nio.channels.SelectableChannel'.(¿˜¨ôşÿÿÿÿ8Âü¿±Ï0
+L
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8Âü¿±Ï0

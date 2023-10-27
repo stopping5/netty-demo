@@ -30,6 +30,7 @@ public class FileNIOClient {
         long transferCount = 0;
         long start = System.currentTimeMillis();
         if (socketChannel.finishConnect()){
+            //transferTo 将channel的数据转移到目标channel上
             transferCount = fileChannel.transferTo(0,fileChannel.size(),socketChannel);
         }
         System.out.println("NIO发送大小:"+transferCount+"，消耗时间:"+ (System.currentTimeMillis() - start));
