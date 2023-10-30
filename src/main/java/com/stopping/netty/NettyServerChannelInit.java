@@ -2,6 +2,11 @@ package com.stopping.netty;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
+import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketServerCompressionHandler;
 
 /**
  * @Classname: NettyServerChannelInit
@@ -11,6 +16,8 @@ import io.netty.channel.ChannelInitializer;
 public class NettyServerChannelInit extends ChannelInitializer {
     @Override
     protected void initChannel(Channel ch) throws Exception {
-        ch.pipeline().addLast(new NettyServerHandler());
+        ChannelPipeline pipeline = ch.pipeline();
+        pipeline.addLast(new NettyServerHandler());
     }
+
 }

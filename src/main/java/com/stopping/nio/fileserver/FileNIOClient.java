@@ -21,6 +21,13 @@ public class FileNIOClient {
         FileNIOClient fileNIOClient = new FileNIOClient();
     }
 
+    /**
+     * 文件NIO上传
+     *
+     *  读取源文件 - FileChannel - SocketChannel - 上传
+     *
+     * @throws IOException
+     */
     public FileNIOClient() throws IOException {
         socketChannel = SocketChannel.open();
         socketChannel.connect(new InetSocketAddress("127.0.0.1",7003));
