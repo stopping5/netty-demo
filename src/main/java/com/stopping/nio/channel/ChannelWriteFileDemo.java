@@ -74,6 +74,11 @@ public class ChannelWriteFileDemo {
 
     /**
      * 复制文件通过channel
+     * 理解channel和stream的区别
+     * 1. channel
+     * - 本身并能直接访问数据，如名它只是一个管道用于运输数据，而需要搭配Buffer使用，Buffer是装载数据的载体
+     * - channel可以双向传输数据（写入、读出）
+     * - 支持异步
      */
     public static void copyFileByChannel(){
         //读取源文件
@@ -81,9 +86,11 @@ public class ChannelWriteFileDemo {
         File copyFile = new File("/Users/stopping/stopping/netty-demo/src/1copy.txt");
         ByteBuffer byteBuffer = ByteBuffer.allocate(8);
         try(
+            //链接输入文件的输入流和输出流
             FileInputStream fileInputStream = new FileInputStream(file);
             FileOutputStream copyFileOutputStream = new FileOutputStream(copyFile);
         ){
+            //输入通道和输出通道 channelAPI既有读取也有写入
             FileChannel channel = fileInputStream.getChannel();
             FileChannel copyChannel = copyFileOutputStream.getChannel();
             while (true){

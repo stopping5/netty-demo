@@ -21,10 +21,16 @@ public class FileNIOServer {
         FileNIOServer fileNIOServer = new FileNIOServer();
     }
 
+    /**
+     * 文件上传服务器
+     * 获取输入源 - socketChannel - 保存本地 - OutputStream
+     * @throws IOException
+     */
     public FileNIOServer() throws IOException {
         socketChannel = ServerSocketChannel.open().bind(new InetSocketAddress(7003));
         FileOutputStream fos = new FileOutputStream(new File("nioTest.mp4"));
         ByteBuffer byteBuffer = ByteBuffer.allocate(4096);
+        System.out.println("start");
         while (true) {
             SocketChannel accept = socketChannel.accept();
             int read = 0;

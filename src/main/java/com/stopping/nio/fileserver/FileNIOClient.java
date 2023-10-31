@@ -21,6 +21,13 @@ public class FileNIOClient {
         FileNIOClient fileNIOClient = new FileNIOClient();
     }
 
+    /**
+     * 文件NIO上传
+     *
+     *  读取源文件 - FileChannel - SocketChannel - 上传
+     *
+     * @throws IOException
+     */
     public FileNIOClient() throws IOException {
         socketChannel = SocketChannel.open();
         socketChannel.connect(new InetSocketAddress("127.0.0.1",7003));
@@ -30,6 +37,7 @@ public class FileNIOClient {
         long transferCount = 0;
         long start = System.currentTimeMillis();
         if (socketChannel.finishConnect()){
+            //transferTo 将channel的数据转移到目标channel上
             transferCount = fileChannel.transferTo(0,fileChannel.size(),socketChannel);
         }
         System.out.println("NIO发送大小:"+transferCount+"，消耗时间:"+ (System.currentTimeMillis() - start));

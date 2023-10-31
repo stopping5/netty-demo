@@ -1,0 +1,9 @@
+
+p
+java:S2095"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(¢„Êİúÿÿÿÿ8‰šè¦Ğ0
+l
+java:S2095"QUse try-with-resources or close this "ServerSocketChannel" in a "finally" clause.(¿—€ûÿÿÿÿ
+c
+java:S1854"ARemove this useless assignment to local variable "fileNIOServer".(¨áğÇşÿÿÿÿ8÷˜‡§Ğ0
+T
+java:S1481"2Remove this unused "fileNIOServer" local variable.(¨áğÇşÿÿÿÿ8ø˜‡§Ğ0

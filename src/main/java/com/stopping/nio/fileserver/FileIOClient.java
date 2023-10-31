@@ -23,6 +23,13 @@ public class FileIOClient {
 
     private Socket socket;
 
+    /**
+     * 文件客户端
+     *  ------------------  ------------------     ------------------
+     *   读取文件输入流      &     数据输出流       &    socket outputStream
+     *  ------------------  ------------------     ------------------
+     * @throws IOException
+     */
     public FileIOClient() throws IOException {
         socket = new Socket("localhost",7001);
         FileInputStream fileInputStream = new FileInputStream(new File("test.mp4"));

@@ -24,5 +24,9 @@ public class BufferDemo {
         while (intBuffer.hasRemaining()){
             System.out.println(intBuffer.get());
         }
+        intBuffer.flip();
+        while (intBuffer.hasRemaining()){
+            System.out.println(intBuffer.get());
+        }
     }
 }

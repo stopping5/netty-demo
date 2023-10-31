@@ -4,6 +4,9 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
+import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.util.CharsetUtil;
 
 import java.nio.charset.StandardCharsets;
@@ -15,7 +18,13 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2022/12/14 10:19 上午
  * @author: stopping
  */
-public class NettyServerHandler extends ChannelInboundHandlerAdapter {
+public class NettyServerHandler extends SimpleChannelInboundHandler<WebSocketFrame> {
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
+        System.out.println("生成异常" + cause);
+    }
+
     /**
      * 接收消息事件
      * @param ctx
@@ -27,7 +36,19 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         //block(ctx,msg);
 
 //        synToEventLoop(ctx, msg);
-        synToSchedule(ctx,msg);
+//        synToSchedule(ctx,msg);
+        System.out.printf("ctx = " + ctx);
+
+
+    }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, WebSocketFrame msg) throws Exception {
+        System.out.printf("ctx = " + ctx);
+        if (msg instanceof TextWebSocketFrame){
+            String text = ((TextWebSocketFrame) msg).text();
+            ctx.channel().writeAndFlush(text);
+        }
     }
 
     /**
@@ -70,6 +91,9 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         //线程休息十秒
         Thread.sleep(10 * 1000);
         System.out.println("服务端 ctx" + ctx);
+        if (ctx == null){
+            return;
+        }
         ByteBuf byteBuf = (ByteBuf) msg;
         System.out.println("客户端"+ctx.channel().remoteAddress()+"消息:" + byteBuf.toString(StandardCharsets.UTF_8));
 

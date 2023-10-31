@@ -24,6 +24,10 @@ public class NettyServer {
 
     public static void main(String[] args) throws InterruptedException {
         //创建线程组
+        //noiEventLoopGroup 处理IO操作的多线程事件的Loop
+        //therefore two NioEventLoopGroup will be used.
+        // The first one, often called 'boss', accepts an incoming connection.
+        // The second one, often called 'worker',handles the traffic of the accepted connection once the boss accepts the connection and registers the accepted connection to the worker.
         EventLoopGroup boosGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         //服务器启动对象，用于配置netty
