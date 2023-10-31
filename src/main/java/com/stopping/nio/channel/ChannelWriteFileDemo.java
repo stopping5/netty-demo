@@ -87,13 +87,17 @@ public class ChannelWriteFileDemo {
             FileChannel channel = fileInputStream.getChannel();
             FileChannel copyChannel = copyFileOutputStream.getChannel();
             while (true){
+                //清空缓存区
                 byteBuffer.clear();
+                //将源文件channel数据写入buffer
                 int read = channel.read(byteBuffer);
                 if (read == -1){
                     System.out.println("文件读取结束");
                     break;
                 }
+                //切换读写模式
                 byteBuffer.flip();
+                //读出buffer数据到复制channel
                 copyChannel.write(byteBuffer);
             }
         }catch (Exception e){
