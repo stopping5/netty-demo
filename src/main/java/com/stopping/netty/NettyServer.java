@@ -41,7 +41,7 @@ public class NettyServer {
                 .childOption(ChannelOption.SO_KEEPALIVE,true)
                 .childHandler(new NettyServerChannelInit())
                 .bind(HOST,PORT)
-                .addListener(future -> {
+                .addListener(future -> { //新增一个监听器 GenericFutureListener
                     if (future.isDone() && future.isSuccess()){
                         System.out.println("绑定端口成功");
                     }
