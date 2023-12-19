@@ -18,6 +18,9 @@ public class BioServer {
 
     public static int CLIENT_NUM = 0;
 
+    /**
+     * 线程池
+     */
     private static ExecutorService CLIENT_MESSAGE_POOL = Executors.newFixedThreadPool(10);
 
     public static void main(String[] args) throws IOException {
@@ -27,6 +30,7 @@ public class BioServer {
         byte [] block = new byte[1024];
 
         while (true){
+            //Listens for a connection to be made to this socket and accepts it. The method blocks until a connection is made.
             Socket socket = serverSocket.accept();
             System.out.println("新的链接,当前链接数："+ ++CLIENT_NUM);
             CLIENT_MESSAGE_POOL.execute(()->{
@@ -35,7 +39,7 @@ public class BioServer {
                     inputStream = socket.getInputStream();
                     int flag =  inputStream.read(block);
                     if (flag != -1){
-                        System.out.println(Thread.currentThread().getId()+"接收消息:" + new String(block));
+                        System.out.println("线程ID："+Thread.currentThread().getId()+"接收消息:" + new String(block));
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
